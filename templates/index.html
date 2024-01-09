@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spam Classifier</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            background-image: url('C:/Users/vvaru/Documents/email_classification/online-security-dark-background-3d-illustration_1419-2804.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            color: #343a40;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+
+        label {
+            color: #495057;
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"] {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007bff;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0px 2px;
+            transition: background-color 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        #result-box {
+            background-color: #0000;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            text-align: center;
+            color: #343a40;
+        }
+
+        #result-field {
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+    </style>
+</head>
+<body>
+    <h1><b>Spam E-mail Classifier</b></h1>
+    <form action="/predict" method="post">
+        <label for="user_input">Enter a text:</label>
+        <input type="text" id="user_input" name="user_input" required>
+        <button type="submit">Predict</button>
+    </form>
+    <div id="result-box">
+        <label for="result-field"><b>Result:</b></label>
+        <input type="text" id="result-field" name="result" readonly>
+        {% if result %}
+            <!-- <p>The given input is {{ result }}.</p> -->
+            <script>
+                document.getElementById("result-field").value = "The given input is {{ result }}";
+            </script>
+        {% endif %}
+    </div>
+</body>
+</html>
